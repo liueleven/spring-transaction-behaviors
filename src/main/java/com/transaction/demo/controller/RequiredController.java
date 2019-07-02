@@ -27,4 +27,17 @@ public class RequiredController {
         classA.method2();
     }
 
+    /**
+     * 不能在Transactional方法中捕获，这里可以捕获到
+     */
+    @GetMapping("/method3")
+    public void method3() {
+        try {
+            classA.method1();
+        }catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("<========================="+e.getMessage()+"=========================================");
+        }
+    }
+
 }
